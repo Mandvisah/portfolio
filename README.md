@@ -1,16 +1,75 @@
-# React + Vite
+# Mandvi's Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive personal portfolio website designed to showcase my skills as a Full Stack Developer. Built with efficiency and aesthetics in mind, utilizing React and Vite.
 
-Currently, two official plugins are available:
+## 🌟 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Modern UI/UX**: Implements Glassmorphism design principles (frosted glass effects).
+- **Responsive Design**: Fully optimized for mobile, tablet, and desktop screens.
+- **Dynamic Animations**: 
+  - Smooth "Reveal on Scroll" entry animations for sections.
+  - Organic "Blob" breathing animation for the profile image.
+  - Interactive hover states and glows.
+- **Theming**: Custom CSS variables for easy color management (currently using an Indigo/Violet palette).
+- **Performance**: High-speed loading enabled by Vite.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend Framework**: [React](https://reactjs.org/) (v19)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: Pure CSS3 (CSS Variables, Flexbox, Grid, Keyframes)
+- **Fonts**: Inter (Google Fonts)
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+To run this project locally on your machine:
+
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/yourusername/portfolio.git
+    cd portfolio
+    ```
+
+2.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Start Development Server**
+    ```bash
+    npm run dev
+    ```
+    Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+
+4.  **Build for Production**
+    ```bash
+    npm run build
+    ```
+
+## 📂 Project Structure
+
+```
+src/
+├── assets/         # Images and static files
+├── components/     # Reusable UI components (Hero, Navbar, Projects, etc.)
+├── data/           # Data files (projects.js) for easy content management
+├── App.css         # Global styles, variables, and animations
+├── App.jsx         # Main application layout
+└── main.jsx        # Entry point
+```
+
+## 🌍 Deployment
+
+### Vercel / Netlify (Recommended)
+1. Push your code to a GitHub repository.
+2. Connect your repository to Vercel or Netlify.
+3. The build command `npm run build` and output directory `dist` should be detected automatically.
+4. Deploy!
+
+### Manual Deployment
+1. Run `npm run build`.
+2. Upload the contents of the `dist` folder to any static hosting provider.
+
+## 📄 License
+
+This project is open source and available for personal use.
