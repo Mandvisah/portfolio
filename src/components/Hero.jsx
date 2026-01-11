@@ -6,9 +6,13 @@ const Hero = () => {
     <section id="home" className="hero">
       <div className="container hero-content">
         <div className="hero-text">
-          <h3>Hy! I Am</h3>
+          <h3>Hi, I'm</h3>
           <h1>Mandvi</h1>
-          <p>I create beautifully simple things, and I love what I do. Full Stack Developer & Computer Science Student.</p>
+          <h2 className="hero-role">Full Stack Developer</h2>
+          <p className="hero-description">
+            I create beautifully simple things, and I love what I do. 
+            Computer Science Student passionate about building accessible and performant web experiences.
+          </p>
           
           <div className="hero-buttons">
             <a href="https://docs.google.com/document/d/1XTzWkr1bTNtR_pnFXabV5vziVvi8cZfSBCrn487FqQE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
