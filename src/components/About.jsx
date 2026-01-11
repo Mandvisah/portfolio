@@ -1,13 +1,21 @@
 import React from 'react';
+import useMousePosition from '../hooks/useMousePosition';
 
 const About = () => {
+  const { x, y } = useMousePosition();
+
   return (
     <section id="about" className="section">
       <div className="container">
-        <h2 className="section-title">About Me</h2>
+        <h2 className="section-title" style={{ translate: `${x * 10}px ${y * 10}px` }}>About Me</h2>
         
         {/* Terminal/IDE Style Window */}
-        <div className="terminal-window">
+        <div 
+          className="terminal-window"
+          style={{ 
+            translate: `${x * -20}px ${y * -20}px`
+          }}
+        >
           <div className="terminal-header">
             <div className="terminal-buttons">
               <span className="close"></span>

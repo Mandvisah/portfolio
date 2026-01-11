@@ -1,6 +1,9 @@
 import React from 'react';
+import useMousePosition from '../hooks/useMousePosition';
 
 const Skills = () => {
+  const { x, y } = useMousePosition();
+  
   const skillsData = [
     {
       category: "Frontend",
@@ -23,12 +26,18 @@ const Skills = () => {
   return (
     <section id="skills" className="section skills-container">
       <div className="container">
-        <h2 className="section-title">Skills & Proficiency</h2>
-        <p className="subtitle">Tools and technologies I use to build things</p>
+        <h2 className="section-title" style={{ translate: `${x * 10}px ${y * 10}px` }}>Skills & Proficiency</h2>
+        <p className="subtitle" style={{ translate: `${x * 5}px ${y * 5}px` }}>Tools and technologies I use to build things</p>
         
         <div className="skills-grid">
           {skillsData.map((group, index) => (
-            <div key={index} className="skill-category-card">
+            <div 
+              key={index} 
+              className="skill-category-card"
+              style={{ 
+                translate: `${x * (index + 1) * 5}px ${y * (index + 1) * 5}px` 
+              }}
+            >
               <h3 className="skill-category-title">{group.category}</h3>
               <div className="skill-list">
                 {group.skills.map((skill, idx) => (

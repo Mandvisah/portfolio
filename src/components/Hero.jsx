@@ -1,26 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import profileImg from '../assets/profile.jpg';
+import useMousePosition from '../hooks/useMousePosition';
 
 const Hero = () => {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const mousePos = useMousePosition();
 
   const roles = ["Full Stack Developer", "CS Student", "Frontend Enthusiast", "Problem Solver"];
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      // Calculate mouse position relative to center of screen (-1 to 1)
-      const x = (e.clientX / window.innerWidth - 0.5) * 2;
-      const y = (e.clientY / window.innerHeight - 0.5) * 2;
-      setMousePos({ x, y });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   useEffect(() => {
     const handleTyping = () => {

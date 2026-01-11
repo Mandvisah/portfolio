@@ -1,10 +1,13 @@
 import React from 'react';
+import useMousePosition from '../hooks/useMousePosition';
 
 const Experience = () => {
+  const { x, y } = useMousePosition();
+
   return (
     <section id="experience" className="section">
       <div className="container">
-        <h2 className="section-title">Experience</h2>
+        <h2 className="section-title" style={{ translate: `${x * 10}px ${y * 10}px` }}>Experience</h2>
         <div className="timeline">
             {/* 
                 Placeholder items. 
@@ -14,7 +17,10 @@ const Experience = () => {
             <div className="timeline-item">
             <div className="timeline-dot"></div>
             <div className="timeline-date">2023 - Present</div>
-            <div className="timeline-content">
+            <div 
+              className="timeline-content"
+              style={{ translate: `${x * -10}px ${y * -5}px` }}
+            >
                 <h3>Full Stack Developer</h3>
                 <h4>Student / Freelance</h4>
                 <p>
@@ -27,7 +33,10 @@ const Experience = () => {
           <div className="timeline-item">
             <div className="timeline-dot"></div>
             <div className="timeline-date">2022 - 2026</div>
-            <div className="timeline-content">
+            <div 
+              className="timeline-content"
+              style={{ translate: `${x * 10}px ${y * 5}px` }}
+            >
                 <h3>Computer Science Student</h3>
                 <h4>University</h4>
                 <p>

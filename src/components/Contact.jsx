@@ -1,13 +1,19 @@
 import React from 'react';
+import useMousePosition from '../hooks/useMousePosition';
 
 const Contact = () => {
+  const { x, y } = useMousePosition();
+
   return (
     <section id="contact" className="section contact-section">
       <div className="container">
-        <h2 className="section-title">Get In Touch</h2>
-        <p className="subtitle">Let's discuss opportunities and collaborate on exciting projects</p>
+        <h2 className="section-title" style={{ translate: `${x * 10}px ${y * 10}px` }}>Get In Touch</h2>
+        <p className="subtitle" style={{ translate: `${x * 5}px ${y * 5}px` }}>Let's discuss opportunities and collaborate on exciting projects</p>
         
-        <div className="contact-card">
+        <div 
+          className="contact-card"
+          style={{ translate: `${x * -15}px ${y * -15}px` }}
+        >
           <h3>Contact Support</h3>
           <div className="contact-options">
             <a href="mailto:mandvigupta35@gmail.com" className="contact-btn">

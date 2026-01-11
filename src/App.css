@@ -115,7 +115,7 @@
   vertical-align: middle;
 }
 
-.hero-text, .hero-image, .floating-icon {
+.hero-text, .hero-image, .floating-icon, .section-title, .subtitle, .terminal-window, .skill-category-card, .project-card, .timeline-content, .contact-card {
   transition: translate 0.1s ease-out;
   will-change: translate;
 }
