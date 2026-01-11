@@ -15,7 +15,7 @@ const Hero = () => {
           </p>
           
           <div className="hero-buttons">
-            <a href="https://docs.google.com/document/d/1XTzWkr1bTNtR_pnFXabV5vziVvi8cZfSBCrn487FqQE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            <a href="https://drive.google.com/file/d/1ftYUhKiUFZB0Z6iz5nm_HbqaF46U0tAp/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
               Download Resume
             </a>
             <a href="#projects" className="btn btn-secondary">
