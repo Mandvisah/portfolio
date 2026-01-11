@@ -115,6 +115,11 @@
   vertical-align: middle;
 }
 
+.hero-text, .hero-image, .floating-icon {
+  transition: translate 0.1s ease-out;
+  will-change: translate;
+}
+
 /* Base Styles */
 * {
   margin: 0;

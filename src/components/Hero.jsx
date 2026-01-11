@@ -6,8 +6,21 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const roles = ["Full Stack Developer", "CS Student", "Frontend Enthusiast", "Problem Solver"];
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      // Calculate mouse position relative to center of screen (-1 to 1)
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+      setMousePos({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   useEffect(() => {
     const handleTyping = () => {
@@ -37,13 +50,13 @@ const Hero = () => {
   return (
     <section id="home" className="hero">
       {/* Floating Cartoon Icons */}
-      <div className="floating-icon icon-1">💻</div>
-      <div className="floating-icon icon-2">🚀</div>
-      <div className="floating-icon icon-3">☕</div>
-      <div className="floating-icon icon-4">⚛️</div>
+      <div className="floating-icon icon-1" style={{ translate: `${mousePos.x * -20}px ${mousePos.y * -20}px` }}>💻</div>
+      <div className="floating-icon icon-2" style={{ translate: `${mousePos.x * 30}px ${mousePos.y * 30}px` }}>🚀</div>
+      <div className="floating-icon icon-3" style={{ translate: `${mousePos.x * -40}px ${mousePos.y * 20}px` }}>☕</div>
+      <div className="floating-icon icon-4" style={{ translate: `${mousePos.x * 20}px ${mousePos.y * -40}px` }}>⚛️</div>
 
       <div className="container hero-content">
-        <div className="hero-text">
+        <div className="hero-text" style={{ translate: `${mousePos.x * 10}px ${mousePos.y * 10}px` }}>
           <h3><span className="wave-emoji">👋</span> Hi, I'm</h3>
           <h1>Mandvi</h1>
           <h2 className="hero-role">I am a <span className="typing-text">{text}</span><span className="cursor">|</span></h2>
@@ -62,7 +75,7 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="hero-image">
+        <div className="hero-image" style={{ translate: `${mousePos.x * -15}px ${mousePos.y * -15}px` }}>
           {/* Note: Ensure profile.jpg is in src/assets/ */}
           <img src={profileImg} alt="Mandvi" className="profile-img" />
         </div>
