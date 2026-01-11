@@ -965,4 +965,22 @@ footer {
   .contact-options {
     gap: 1.5rem;
   }
+
+  /* Adjust terminal for mobile */
+  .terminal-window {
+    max-width: 100%;
+    margin: 0 -1rem; /* Full width minus parent container padding compensation if needed */
+    font-size: 0.85rem;
+    box-shadow: none; /* Reduce shadow on small screens */
+  }
+  
+  .terminal-body {
+    padding: 15px;
+  }
+
+  /* Hide or reduce floating icons on mobile as they may cover text */
+  .floating-icon {
+    font-size: 2rem;
+    opacity: 0.1; /* More subtle */
+  }
 }
