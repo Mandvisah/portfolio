@@ -1,75 +1,86 @@
 # Mandvi's Portfolio
 
-A modern, responsive personal portfolio website designed to showcase my skills as a Full Stack Developer. Built with efficiency and aesthetics in mind, utilizing React and Vite.
+A professional, high-performance personal portfolio website designed to showcase my skills as a Full Stack Developer. Built with modern web technologies to demonstrate clean code, responsive design, and interactive user experiences.
 
-## 🌟 Features
+##  Features
 
-- **Modern UI/UX**: Implements Glassmorphism design principles (frosted glass effects).
-- **Responsive Design**: Fully optimized for mobile, tablet, and desktop screens.
-- **Dynamic Animations**: 
-  - Smooth "Reveal on Scroll" entry animations for sections.
-  - Organic "Blob" breathing animation for the profile image.
-  - Interactive hover states and glows.
-- **Theming**: Custom CSS variables for easy color management (currently using an Indigo/Violet palette).
-- **Performance**: High-speed loading enabled by Vite.
+- **Modern UI/UX**: clean, minimal dark-themed interface with **Glassmorphism** effects.
+- ** Fast Performance**: Powered by **Vite** for instant server start and lightning-fast HMR.
+- ** Fully Responsive**: Mobile-first design using **Tailwind CSS**, working perfectly on all devices.
+- ** Smooth Animations**: Custom \RevealOnScroll\ animations and interactive hover effects.
+- ** Functional Contact Form**: Integrated with **EmailJS** for real-time email delivery directly to your inbox.
+- ** Resume Download**: Direct access to download/view the CV.
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
-- **Frontend Framework**: [React](https://reactjs.org/) (v19)
+- **Frontend**: [React.js](https://react.dev/) (v19)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
 - **Build Tool**: [Vite](https://vitejs.dev/)
-- **Styling**: Pure CSS3 (CSS Variables, Flexbox, Grid, Keyframes)
-- **Fonts**: Inter (Google Fonts)
+- **Email Service**: [EmailJS](https://www.emailjs.com/)
 
-## 🚀 Getting Started
+##  Getting Started
 
-To run this project locally on your machine:
+Follow these instructions to get the project up and running on your local machine.
+
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- npm (Node Package Manager)
+
+### Installation
 
 1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/yourusername/portfolio.git
+    \\\ash
+    git clone https://github.com/Mandvisah/portfolio.git
     cd portfolio
-    ```
+    \\\
 
 2.  **Install Dependencies**
-    ```bash
+    \\\ash
     npm install
-    ```
+    \\\
 
-3.  **Start Development Server**
-    ```bash
+3.  **Configure Environment Variables**
+    This project uses EmailJS for the contact form. You need to create a \.env\ file in the root directory:
+    
+    \\\ash
+    # Create a new file named .env
+    # (Do not commit this file)
+    \\\
+
+    Add your EmailJS credentials to it:
+    \\\env
+    VITE_SERVICE_ID=your_service_id
+    VITE_TEMPLATE_ID=your_template_id
+    VITE_PUBLIC_KEY=your_public_key
+    \\\
+
+4.  **Run Development Server**
+    \\\ash
     npm run dev
-    ```
+    \\\
     Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 
-4.  **Build for Production**
-    ```bash
-    npm run build
-    ```
+##  Project Structure
 
-## 📂 Project Structure
+\\\ash
+portfolio/
+ public/              # Static assets (Resume, Favicon)
+ src/
+    assets/          # Images and media
+    components/      # Reusable UI components (Hero, Navbar, etc.)
+    App.jsx          # Main application component
+    main.jsx         # Entry point
+    index.css        # Global styles & Tailwind directives
+ .env                 # Environment variables (not committed)
+ index.html           # HTML entry point
+\\\
 
-```
-src/
-├── assets/         # Images and static files
-├── components/     # Reusable UI components (Hero, Navbar, Projects, etc.)
-├── data/           # Data files (projects.js) for easy content management
-├── App.css         # Global styles, variables, and animations
-├── App.jsx         # Main application layout
-└── main.jsx        # Entry point
-```
+##  Contact
 
-## 🌍 Deployment
+**Mandvi Gupta**  
+- **LinkedIn**: [Mandvi Gupta](https://www.linkedin.com/in/mandvi-gupta-96ab98280/)  
+- **GitHub**: [Mandvisah](https://github.com/Mandvisah)  
 
-### Vercel / Netlify (Recommended)
-1. Push your code to a GitHub repository.
-2. Connect your repository to Vercel or Netlify.
-3. The build command `npm run build` and output directory `dist` should be detected automatically.
-4. Deploy!
-
-### Manual Deployment
-1. Run `npm run build`.
-2. Upload the contents of the `dist` folder to any static hosting provider.
-
-## 📄 License
-
-This project is open source and available for personal use.
+---
+* 2026 Mandvi. All rights reserved.*
