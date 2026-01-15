@@ -1,36 +1,85 @@
-import React from 'react';
-import useMousePosition from '../hooks/useMousePosition';
+import React, { useState } from 'react';
+import RevealOnScroll from './RevealOnScroll';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
-  const { x, y } = useMousePosition();
+  const [formData, setFormData] = useState({
+      name: "",
+      email: "",
+      message: ""
+  })
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      
+      const serviceID = import.meta.env.VITE_SERVICE_ID;
+      const templateID = import.meta.env.VITE_TEMPLATE_ID;
+      const userID = import.meta.env.VITE_PUBLIC_KEY;
+
+      emailjs.send(serviceID, templateID, formData, userID).then((response) => {
+          alert("Message Sent!");
+          setFormData({ name: "", email: "", message: "" });
+      }).catch((error) => {
+          alert("An error occurred, Please try again");
+          console.log(error);
+      });
+  }
 
   return (
-    <section id="contact" className="section contact-section">
-      <div className="container">
-        <h2 className="section-title" style={{ translate: `${x * 10}px ${y * 10}px` }}>Get In Touch</h2>
-        <p className="subtitle" style={{ translate: `${x * 5}px ${y * 5}px` }}>Let's discuss opportunities and collaborate on exciting projects</p>
-        
-        <div 
-          className="contact-card"
-          style={{ translate: `${x * -15}px ${y * -15}px` }}
-        >
-          <h3>Contact Support</h3>
-          <div className="contact-options">
-            <a href="mailto:mandvigupta35@gmail.com" className="contact-btn">
-                <div className="icon-box">@</div>
-                <span>Email</span>
-            </a>
-            <a href="https://github.com/Mandvisah" target="_blank" rel="noopener noreferrer" className="contact-btn">
-                <div className="icon-box">Gh</div>
-                <span>GitHub</span>
-            </a>
-             <a href="https://www.linkedin.com/in/mandvi-gupta-96ab98280/" target="_blank" rel="noopener noreferrer" className="contact-btn">
-                <div className="icon-box">in</div>
-                <span>LinkedIn</span>
-            </a>
-          </div>
+    <section id="contact" className="min-h-screen flex items-center justify-center py-20 px-4">
+      <RevealOnScroll>
+        <div className="px-4 w-full md:w-[500px]">
+          <h2 className="text-3xl font-bold mb-8 text-center text-white">Get In <span className="text-blue-500">Touch</span></h2>
+          <p className="text-center text-gray-400 mb-6 font-medium">
+            I'm currently looking for new opportunities, my inbox is always open. <br/>
+            Whether you have a question or just want to say hi, I'll try my best to get back to you!
+          </p>
+          <form onSubmit={handleSubmit} className="w-full max-w-2xl bg-gray-800/50 p-8 rounded-xl border border-white/10 shadow-2xl space-y-6">
+             <div>
+                 <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                 <input 
+                    type="text" 
+                    id="name"
+                    name="name"
+                    placeholder="Your Name..." 
+                    className="w-full bg-black/40 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                 />
+             </div>
+             <div>
+                 <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                 <input 
+                    type="email" 
+                    id="email"
+                    name="email"
+                    placeholder="Your.email@example.com..." 
+                    className="w-full bg-black/40 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                 />
+             </div>
+             <div>
+                 <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                 <textarea 
+                    id="message"
+                    name="message"
+                    placeholder="Your Message..." 
+                    className="w-full bg-black/40 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 h-32 resize-none"
+                    required
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                 ></textarea>
+             </div>
+             
+             <button type="submit" className="w-full bg-blue-600 text-white font-medium py-3 rounded hover:bg-blue-700 transition hover:-translate-y-0.5 shadow-lg shadow-blue-500/20">
+                 Send Message
+             </button>
+          </form>
         </div>
-      </div>
+      </RevealOnScroll>
     </section>
   );
 };

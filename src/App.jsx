@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -7,33 +7,26 @@ import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import RevealOnScroll from './components/RevealOnScroll'
-import './App.css'
+import LoadingScreen from './components/LoadingScreen'
+import './index.css'
 
 function App() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
-    <div className="App">
-      <Navbar />
-      <Hero />
-      <RevealOnScroll>
+    <>
+      {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />} 
+      <div className={`min-h-screen transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'} bg-black text-gray-100`}>
+        <Navbar />
+        <Hero />
         <About />
-      </RevealOnScroll>
-      <RevealOnScroll>
         <Experience />
-      </RevealOnScroll>
-      <RevealOnScroll>
         <Skills />
-      </RevealOnScroll>
-      <RevealOnScroll>
         <Projects />
-      </RevealOnScroll>
-      <RevealOnScroll>
         <Contact />
-      </RevealOnScroll>
-      <RevealOnScroll>
         <Footer />
-      </RevealOnScroll>
-    </div>
+      </div>
+    </>
   )
 }
 

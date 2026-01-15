@@ -29,19 +29,8 @@ const RevealOnScroll = ({ children, threshold = 0.1, delay = 0 }) => {
     };
   }, [threshold]);
 
-  const style = {
-    opacity: 0,
-    transform: 'translateY(30px)',
-    transition: `all 0.8s cubic-bezier(0.5, 0, 0, 1) ${delay}s`
-  };
-
-  const visibleStyle = {
-    opacity: 1,
-    transform: 'translateY(0)'
-  };
-
   return (
-    <div ref={ref} style={isVisible ? { ...style, ...visibleStyle } : style}>
+    <div ref={ref} className={`transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[75px]'}`}>
       {children}
     </div>
   );
