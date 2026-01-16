@@ -13,8 +13,8 @@ const Contact = () => {
       e.preventDefault();
       
       try {
-          // Use Netlify Function URL for deployed app, or local backend for dev
-          const apiUrl = import.meta.env.VITE_API_URL || "/.netlify/functions/contact";
+          // Use relative path - handled by Vite Proxy (Dev) and Netlify Redirects (Prod)
+          const apiUrl = "/api/contact";
           
           const response = await fetch(apiUrl, {
               method: "POST",
