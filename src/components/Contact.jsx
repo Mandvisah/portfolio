@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import RevealOnScroll from './RevealOnScroll';
-import emailjs from 'emailjs-com';
+
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,20 +9,29 @@ const Contact = () => {
       message: ""
   })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
       e.preventDefault();
       
-      const serviceID = import.meta.env.VITE_SERVICE_ID;
-      const templateID = import.meta.env.VITE_TEMPLATE_ID;
-      const userID = import.meta.env.VITE_PUBLIC_KEY;
+      try {
+          const response = await fetch("/api/contact", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+          });
 
-      emailjs.send(serviceID, templateID, formData, userID).then((response) => {
-          alert("Message Sent!");
-          setFormData({ name: "", email: "", message: "" });
-      }).catch((error) => {
-          alert("An error occurred, Please try again");
-          console.log(error);
-      });
+          if (response.ok) {
+              alert("Message Sent!");
+              setFormData({ name: "", email: "", message: "" });
+          } else {
+              const result = await response.json();
+              alert(`Failed to send message: ${result.error || "Unknown Error"}`);
+          }
+      } catch (error) {
+          console.error(error);
+          alert(`An error occurred: ${error.message}. Please check if the server is running.`);
+      }
   }
 
   return (
