@@ -13,7 +13,10 @@ const Contact = () => {
       e.preventDefault();
       
       try {
-          const response = await fetch("/api/contact", {
+          // Use the API URL from .env, or fallback to relative path for dev proxy
+          const apiUrl = import.meta.env.VITE_API_URL || "/api/contact";
+          
+          const response = await fetch(apiUrl, {
               method: "POST",
               headers: {
                   "Content-Type": "application/json",
@@ -21,12 +24,20 @@ const Contact = () => {
               body: JSON.stringify(formData),
           });
 
+          const contentType = response.headers.get("content-type");
           if (response.ok) {
               alert("Message Sent!");
               setFormData({ name: "", email: "", message: "" });
           } else {
-              const result = await response.json();
-              alert(`Failed to send message: ${result.error || "Unknown Error"}`);
+              // Handle cases where the server returns HTML (like 404 or 500 pages) instead of JSON
+              if (contentType && contentType.indexOf("application/json") !== -1) {
+                  const result = await response.json();
+                  alert(`Failed to send message: ${result.error || "Unknown Error"}`);
+              } else {
+                  const text = await response.text();
+                  console.error("Server Response:", text);
+                  alert(`Server error (${response.status}): The backend is likely not reachable.`);
+              }
           }
       } catch (error) {
           console.error(error);
